@@ -1,0 +1,28 @@
+{
+    "name": "oblak/wp-plugin-settings-manager",
+    "description": "WordPress plugin settings manager",
+    "version": "1.0.0",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Oblak\\WPS\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "oblak/wordpress-coding-standard": "*"
+    },
+    "scripts": {},
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "platform": {
+        "php": "7.4"
+    }
+}
