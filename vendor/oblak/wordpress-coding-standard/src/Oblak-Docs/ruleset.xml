@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Oblak WordPress Docs coding standard" >
+
+    <!--
+	#############################################################################
+	Include standards
+	#############################################################################
+	-->
+    <rule ref="WordPress-Docs">
+        <type>warning</type>
+    </rule>
+
+</ruleset>

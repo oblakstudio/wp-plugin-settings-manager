@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Oblak WordPress Core coding standard">
+
+    <!--
+	#############################################################################
+	BASE CONFIG
+	#############################################################################
+	-->
+    <arg value="sp"/>                    <!-- Show sniff and progress -->
+    <arg name="parallel" value="8"/>     <!-- Enables parallel processing when available for faster results. -->
+    <arg name="colors"/>                 <!-- Show colors -->
+    <arg name="extensions" value="php"/> <!-- File extensions to check -->
+
+
+    <!--
+	#############################################################################
+	EXCLUDE PATTERNS
+	#############################################################################
+	-->
+    <exclude-pattern>dist/*</exclude-pattern>
+    <exclude-pattern>docker/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>tests/*</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <!--
+	#############################################################################
+	SET UP THE RULESETS - WordPress
+	#############################################################################
+	-->
+	<rule ref="PHPCompatibilityWP"/>
+    <rule ref="WordPress-Extra"/>
+    <rule ref="WordPress-Docs"/>
+
+
+    <!--
+	#############################################################################
+	SET UP THE RULESETS - PHPCsExtra
+	#############################################################################
+	-->
+    <rule ref="Modernize"/>
+    <rule ref="Universal.Arrays.MixedKeyedUnkeyedArray"/>
+    <rule ref="Universal.Files.SeparateFunctionsFromOO"/>
+
+    <!--
+	#############################################################################
+	Allow normal classnames for autoload
+	#############################################################################
+	-->
+    <rule ref="WordPress-Core">
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+    </rule>
+
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Generic.Commenting.Todo"/>
+
+    <!--
+	#############################################################################
+	Add the default text domains
+	#############################################################################
+	-->
+    <rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+                <element value="default"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!--
+	#############################################################################
+	Use Tabs instead of spaces
+	#############################################################################
+    -->
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed">
+        <severity>0</severity>
+    </rule>
+
+    <!--
+    #############################################################################
+    Remove spacing after function open
+    #############################################################################
+    -->
+    <rule ref="Oblak.Methods.FunctionOpeningBrace"/>
+
+    <!--
+    #############################################################################
+    Modernize dirname always, min php 7.0
+    #############################################################################
+    -->
+    <rule ref="Modernize.FunctionCalls.Dirname.Nested">
+		<severity>10</severity>
+	</rule>
+
+</ruleset>

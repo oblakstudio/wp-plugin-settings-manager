@@ -1,0 +1,25 @@
+<ruleset name="PSR12">
+    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="150"/>
+        </properties>
+    </rule>
+
+    <arg value="sp"/>                    <!-- Show sniff and progress -->
+    <arg name="parallel" value="8"/>     <!-- Enables parallel processing when available for faster results. -->
+    <arg name="colors"/>                 <!-- Show colors -->
+    <arg name="extensions" value="php"/> <!-- File extensions to check -->
+
+    <file>src/Oblak/Sniffs</file>
+    <file>src/WooCommerce/Sniffs</file>
+
+
+    <exclude-pattern>dist/*</exclude-pattern>
+    <exclude-pattern>docker/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>tests/*</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+</ruleset>
