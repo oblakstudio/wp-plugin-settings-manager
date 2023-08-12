@@ -5,7 +5,7 @@
  * @package Plugin_Settings
  */
 
-namespace Oblak\WPS;
+namespace Oblak\WP;
 
 /**
  * Handles the output of the plugin settings

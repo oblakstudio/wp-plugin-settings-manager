@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.OBLAK_BOT_TOKEN }}
       - name: Publish a composer package
-        uses: better-php-actions/publish-composer-plugin@master
+        uses: better-php-actions/publish-composer-package@v1
         with:
           package_slug: "wp-plugin-settings-manager"
           package_name: "WP Plugin Settings Manager"
