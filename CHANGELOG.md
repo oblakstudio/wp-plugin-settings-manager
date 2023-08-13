@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/oblakstudio/wp-plugin-settings-manager/compare/v1.0.0...v1.0.1) (2023-08-13)
+
+
+### Bug Fixes
+
+* Fixed class namespace ([4289baf](https://github.com/oblakstudio/wp-plugin-settings-manager/commit/4289baf7066f78d6770c5cacfceb2506b897389d))
+
 # 1.0.0 (2023-08-12)
 
 
