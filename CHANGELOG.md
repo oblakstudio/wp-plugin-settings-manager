@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/oblakstudio/wp-plugin-settings-manager/compare/v1.0.1...v1.1.0) (2023-08-22)
+
+
+### Features
+
+* Implemented Helper ([febaf3d](https://github.com/oblakstudio/wp-plugin-settings-manager/commit/febaf3dfd3a1c5454e35e3604d4ba0c7180d622e))
+
 ## [1.0.1](https://github.com/oblakstudio/wp-plugin-settings-manager/compare/v1.0.0...v1.0.1) (2023-08-13)
 
 
