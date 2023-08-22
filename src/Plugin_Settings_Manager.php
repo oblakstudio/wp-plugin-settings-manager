@@ -45,7 +45,7 @@ class Plugin_Settings_Manager {
         $this->config = $config;
 
         add_action( 'admin_init', array( $this, 'buffer' ) );
-        add_action( 'plugin_action_links' . $this->config['basename'], array( $this, 'output_settings_link' ), 20, 1 );
+        add_action( 'plugin_action_links', array( $this, 'output_settings_link' ), 20, 2 );
         add_filter( 'plugin_row_meta', array( $this, 'add_plugin_meta' ), 20, 2 );
         add_action( 'admin_menu', array( $this, 'add_menu_pages' ), 10 );
 
@@ -62,15 +62,20 @@ class Plugin_Settings_Manager {
     /**
      * Output settings link
      *
-     * @param  array $links Array of Plugin links.
-     * @return array        Modified array of Plugin links
+     * @param  array  $links       Array of Plugin links.
+     * @param  string $plugin_file Plugin basename.
+     * @return array               Modified array of Plugin links
      */
-    public function output_settings_link( $links ) {
+    public function output_settings_link( $links, $plugin_file ) {
+        if ( $plugin_file !== $this->config['basename'] ) {
+            return $links;
+        }
+
         $links[] = sprintf(
             '<a href="%s">%s</a>',
             add_query_arg(
                 array(
-                    'page' => $this->slug . '_settings',
+                    'page' => $this->slug . '-settings',
                 ),
                 admin_url( 'admin.php' )
             ),

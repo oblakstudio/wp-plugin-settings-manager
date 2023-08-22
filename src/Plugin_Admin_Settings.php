@@ -163,6 +163,8 @@ class Plugin_Admin_Settings {
 				$value['value'] = self::get_option( $value['id'], $value['default'] );
 			}
 
+            $disabled = isset( $value['disabled'] ) && $value['disabled'] ? true : false;
+
 			// Custom attribute handling.
 			$custom_attributes = array();
 
@@ -197,7 +199,10 @@ class Plugin_Admin_Settings {
 					break;
 
 				case 'info':
-					echo '<tr><th scope="row" class="titledesc"/><td style="' . esc_attr( $value['css'] ) . '">';
+                    if ( empty( $value['text'] ) ) {
+                        break;
+                    }
+					echo '<tr><td colspan="2" style="padding: 0;' . esc_attr( $value['css'] ) . '">';
 					echo wp_kses_post( wpautop( wptexturize( $value['text'] ) ) );
 					echo '</td></tr>';
 					break;
@@ -241,6 +246,7 @@ class Plugin_Admin_Settings {
 									value="<?php echo esc_attr( $option_value ); ?>"
 									class="<?php echo esc_attr( $value['class'] ); ?>"
 									placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
+                                    <?php echo $disabled ? 'disabled' : ''; ?>
 								<?php echo implode( ' ', $custom_attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 									/><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</td>
@@ -317,6 +323,7 @@ class Plugin_Admin_Settings {
 									id="<?php echo esc_attr( $value['id'] ); ?>"
 									style="<?php echo esc_attr( $value['css'] ); ?>"
 									class="<?php echo esc_attr( $value['class'] ); ?>"
+                                    <?php echo $disabled ? 'disabled' : ''; ?>
 								<?php echo implode( ' ', $custom_attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 								<?php echo 'multiselect' === $value['type'] ? 'multiple="multiple"' : ''; ?>
 									>
@@ -419,7 +426,7 @@ class Plugin_Admin_Settings {
                                         <span class="help-tooltip">
                                             <?php echo self::help_tip( esc_html( $value['tooltip'] ) ); //phpcs:ignore ?>
                                         </span>
-										<?php endif; ?>
+									<?php endif; ?>
                                     <fieldset>
 							<?php
 					} else {
@@ -773,7 +780,7 @@ class Plugin_Admin_Settings {
 		}
 
 	    // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		return printf(
+		return sprintf(
             '<span class="plugin-manager-help-tip" tabindex="0" aria-label="%s" data-tip="%s"></span>',
             $sanitized_tip,
             $sanitized_tip,
